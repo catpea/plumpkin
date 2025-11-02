@@ -1,0 +1,30 @@
+{
+  "type": "module",
+  "name": "plumpkin",
+  "version": "1.0.0",
+  "description": "A runtime import map resolver with caching and remote URL support",
+
+  "author": "catpea (https://github.com/catpea)",
+  "license": "MIT",
+
+  "main": "index.js",
+
+  "scripts": {
+    "test": "node --test"
+  },
+
+  "importmap": {
+    "imports": {
+      "test-module": "./test/fixtures/test-module.js",
+      "utils/": "./test/fixtures/utils/",
+      "utils/advanced/": "./test/fixtures/utils/advanced/",
+      "scoped": "./test/fixtures/scoped-module.js"
+    },
+    "scopes": {
+      "./test/fixtures/special/": {
+        "scoped": "./test/fixtures/special/scoped-module.js"
+      }
+    }
+  }
+
+}
