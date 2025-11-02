@@ -122,7 +122,10 @@ class ImportMap {
   async import(specifier, referrerUrl) {
     const importMap = await this.#loadPackageImports();
 
-    if (this.#cache.has(specifier)) return this.#cache.get(specifier);
+    if (this.#cache.has(specifier)){
+      const module = this.#cache.get(specifier);
+      return module?.default?module.default:module;
+    }
 
     // Resolve specifier using spec-compliant algorithm
     const target = this.#resolveImportMatch(specifier, importMap, referrerUrl);
@@ -148,7 +151,7 @@ class ImportMap {
     }
 
     this.#cache.set(specifier, module);
-    return module;
+    return module?.default?module.default:module;
   }
 
   #resolveImportMatch(specifier, importMap, referrerUrl) {
