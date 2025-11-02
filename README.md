@@ -37,6 +37,10 @@ const validator = await importmap('validation/validator');
 npm install plumpkin
 ```
 
+**Requirements:**
+- Node.js >= 18.0.0
+- ES Modules support (`"type": "module"` in your package.json)
+
 ## Security
 
 **Remote imports are disabled by default for your safety.**

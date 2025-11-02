@@ -4,13 +4,45 @@
   "version": "1.0.0",
   "description": "A runtime import map resolver with caching and remote URL support",
 
+  "keywords": [
+    "import-map",
+    "importmap",
+    "es-modules",
+    "esm",
+    "module-resolver",
+    "import-resolver",
+    "bare-specifiers",
+    "path-mapping",
+    "remote-imports",
+    "cdn",
+    "module-loader"
+  ],
+
   "author": "catpea (https://github.com/catpea)",
   "license": "MIT",
 
   "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "default": "./index.js"
+    }
+  },
+
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+
+  "engines": {
+    "node": ">=18.0.0"
+  },
 
   "scripts": {
-    "test": "node --test"
+    "save": "git add .; git commit -m 'Updated Release'; npm version patch; npm publish; git push --follow-tags;",
+    "test": "node --test",
+    "prepublishOnly": "npm test"
   },
 
   "importmap": {
@@ -25,6 +57,20 @@
         "scoped": "./test/fixtures/special/scoped-module.js"
       }
     }
+  },
+
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catpea/plumpkin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/catpea/plumpkin/issues"
+  },
+  "homepage": "https://catpea.github.io/plumpkin",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/catpea"
   }
 
 }
